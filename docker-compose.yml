@@ -1,0 +1,14 @@
+services:
+  pg-chat:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=chat_db
+    volumes:
+      - pg-chat:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+volumes:
+  pg-chat:
