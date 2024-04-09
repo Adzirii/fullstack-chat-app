@@ -2,13 +2,13 @@ import './App.css'
 import Taa from "./Taa.jsx";
 
 export default function App() {
+
     return (
         <>
             <div>Who are you?</div>
-            <input id={"name"} type='text' placeholder={"taa"}/>
+            <input id={"name"} type='text' placeholder={"username"}/>
+            <input id={"pass"} type='text' placeholder={"password"}/>
             <button onClick={() => {
-                console.log("hi")
-
                 fetch("http://localhost:8080/api/login", {
                     method: "POST",
                     mode: "cors",
@@ -18,17 +18,21 @@ export default function App() {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({"username": "adziri", "password": 'Textual content'})
+                    body: JSON.stringify({
+                        "username": document.getElementById('name').value,
+                        "password":  document.getElementById('pass').value
+                    })
                 }).then((response) => {
+                    console.log(response.text())
                     return response.json();
                 })
                     .catch((error) => console.log(error));
-                console.log("success")
             }}>Taa
             </button>
             <div>Huh...</div>
             <Taa></Taa>
             <div id={'uu'}>Wat?</div>
         </>
+
     );
 }
