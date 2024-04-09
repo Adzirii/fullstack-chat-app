@@ -18,8 +18,8 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public User findByUsername(String username){
-        return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("такого пользователя нету"));
+    public Boolean findByUsername(String username){
+        return userRepository.findByUsername(username).isPresent();
 
     }
 

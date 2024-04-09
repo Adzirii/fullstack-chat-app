@@ -4,3 +4,8 @@ spring:
     username: user
     password: pass
     url: jdbc:postgresql://localhost:5433/chat_db
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
