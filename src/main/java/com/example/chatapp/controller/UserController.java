@@ -20,7 +20,7 @@ public class UserController {
         return "index";
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
+//    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/login")
     public String login(@RequestBody RegisterModel form) {
         log.info("Хоть что то");
