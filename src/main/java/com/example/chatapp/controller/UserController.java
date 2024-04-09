@@ -4,6 +4,9 @@ import com.example.chatapp.dto.RegisterModel;
 import com.example.chatapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,17 +23,10 @@ public class UserController {
         return "index";
     }
 
-//    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/login")
-    public String login(@RequestBody RegisterModel form) {
-        log.info("Хоть что то");
-        if (userService.findByUsername(form.username())) {
-            log.info("success");
-            return "success";
-        } else {
-            log.info("UNLUCKY");
-            return "error";
-        }
+    public void register(@RequestBody RegisterModel form) {
+        userService.save(form);
     }
 
 }
